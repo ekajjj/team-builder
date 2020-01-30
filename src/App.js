@@ -15,7 +15,13 @@ function App() {
       role: 'Web Dev'
       
 
-    }])
+    },
+  {
+      id: 2,
+      name: 'Buddy Agyin',
+      email: 'buddy@lambdaschool.com',
+      role: 'TL'
+  },])
   const addMember = person => {
     const newMember = {
       id: Date.now(),
