@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react'; 
-import { Container } from 'reactstrap';
+import { useState} from 'react'; 
+
 import './App.css';
 
 import Form from './Components/Form';
