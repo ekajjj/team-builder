@@ -1,45 +1,38 @@
-import React, {useState} from 'react';
-import Form from './Components/Form';
+import React from 'react';
+import { useState, useEffect } from 'react'; 
+import { Container } from 'reactstrap';
 import './App.css';
-import TeamMembers from './Components/TeamMembers';
 
+import Form from './Components/Form';
+import MemberCard from './Components/MemberCard';
 
 function App() {
-  const [teamMember, setTeamMember] = useState([
+  const [teamMembers, setTeamMembers] = useState([
     {
-      id: 1,
-      first_name: 'Jake' ,
-      last_name: 'Johnson' ,
+      id:1,
+      name: 'Jake Johnson',
       email: 'jakejjohnson@gmail.com',
-      github: 'ekajjj'
-    }
-  ]);
+      role: 'Web Dev'
+      
 
-  const addTeamMember = e => {
-    const newTeamMember = {
+    }])
+  const addMember = person => {
+    const newMember = {
       id: Date.now(),
-      first_name: e.first_name,
-      last_name: e.last_name ,
-      email: e.email,
-      github: e.github
-    }
-    setTeamMember([...teamMember, newTeamMember])
-  }
+      name: person.name,
+      email: person.email,
+      role: person.role
+    };
+    setTeamMembers([...teamMembers, newMember])
+  };
 
-  const delTeamMember = id => {
-    const newArray = teamMember.filter(info => {
-      return info.id !== id
-    })
-    setTeamMember(newArray)
-  }
 
   return (
-    <div className="App">
-      <div className = 'container'>
-      <Form addTeamMember = {addTeamMember} />
-      <TeamMembers MemberList = {teamMember} deleteMember = {delTeamMember} />
-      </div>
+    <div>
+      <Form addMember={addMember}/>
+      <MemberCard member={teamMembers}/>
     </div>
+
   );
 }
 
